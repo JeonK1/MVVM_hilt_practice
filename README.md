@@ -1,4 +1,4 @@
-# MediTime
+# MVVM_hilt_practice
 MVVM, dagger hilt, clone coding study<br>
 <br><br>
 <h2>프로젝트 개요</h2>
