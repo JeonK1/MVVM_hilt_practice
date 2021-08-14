@@ -9,6 +9,7 @@ MVVM, dagger hilt, clone coding study<br>
 <h2>Study Note</h2>
 - <a href="https://blog.naver.com/ponson1017/222461899621">1. Parcelize</a> <br>
 - <a href="https://blog.naver.com/ponson1017/222467669677">2. Dagger Hilt</a> <br>
+- <a href="https://blog.naver.com/ponson1017/222470235989">3. View Binding </a> <br>
 <br><br>
 <h2>개발 환경</h2>
 Complie SDK Version: Android 11 (API 30) <br>
