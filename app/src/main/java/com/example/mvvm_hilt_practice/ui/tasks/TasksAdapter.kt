@@ -34,10 +34,10 @@ class TasksAdapter: ListAdapter<Task, TasksAdapter.TasksViewHolder>(DiffCallback
 
     class DiffCallback: DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean =
-            oldItem.id == newItem.id // two item represent same logic item
+            oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean =
-            oldItem == newItem // when content item is changed (updated)
+            oldItem == newItem
 
     }
 }

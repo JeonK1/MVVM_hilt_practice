@@ -5,8 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM task_table")
-    fun getTasks(): Flow<List<Task>>
+    // %가 없으면 완전 일치하는걸 찾음
+    @Query("SELECT * FROM task_table WHERE name LIKE '%' || :searchQuery || '%' ORDER BY important DESC")
+    fun getTasks(searchQuery: String): Flow<List<Task>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(task: Task)

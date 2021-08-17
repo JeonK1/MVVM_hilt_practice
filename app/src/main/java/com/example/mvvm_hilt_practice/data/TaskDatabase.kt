@@ -1,6 +1,5 @@
 package com.example.mvvm_hilt_practice.data
 
-import android.util.Log
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
