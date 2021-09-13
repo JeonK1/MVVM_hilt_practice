@@ -13,6 +13,7 @@ MVVM, dagger hilt, clone coding study<br>
 - <a href="https://blog.naver.com/ponson1017/222470384067">4. ListAdapter, Provider</a> <br>
 - <a href="https://blog.naver.com/ponson1017/222473811753">5. Menu </a> <br>
 - <a href="https://blog.naver.com/ponson1017/222481307199">6. Flow </a> <br>
+- <a href="https://blog.naver.com/ponson1017/222504643527">7. DataStore </a> <br>
 
 <br><br>
 <h2>개발 환경</h2>
