@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvm_hilt_practice.R
+import com.example.mvvm_hilt_practice.data.Task
 import com.example.mvvm_hilt_practice.databinding.FragmentTasksBinding
 import com.example.mvvm_hilt_practice.util.onQueryTextChanged
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +19,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TasksFragment : Fragment(R.layout.fragment_tasks) {
+class TasksFragment : Fragment(R.layout.fragment_tasks), TasksAdapter.OnItemClickListener {
 
     private val viewModel: TasksViewModel by viewModels()
 
@@ -26,7 +27,7 @@ class TasksFragment : Fragment(R.layout.fragment_tasks) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentTasksBinding.bind(view) // inflate 해줄 필요 없음
-        val taskAdapter = TasksAdapter()
+        val taskAdapter = TasksAdapter(this)
         binding.apply {
             recyclerViewTasks.apply {
                 adapter = taskAdapter
@@ -80,5 +81,13 @@ class TasksFragment : Fragment(R.layout.fragment_tasks) {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onItemClick(task: Task) {
+        viewModel.onTaskSelected(task)
+    }
+
+    override fun onCheckBoxClick(task: Task, isChecked: Boolean) {
+        viewModel.onTaskCheckedChanged(task, isChecked)
     }
 }
