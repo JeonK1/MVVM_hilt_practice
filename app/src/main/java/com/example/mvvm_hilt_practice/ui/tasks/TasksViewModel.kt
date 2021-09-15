@@ -7,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.mvvm_hilt_practice.data.PreferencesManager
 import com.example.mvvm_hilt_practice.data.Task
 import com.example.mvvm_hilt_practice.data.TaskDao
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class TasksViewModel @ViewModelInject constructor(
@@ -20,6 +22,9 @@ class TasksViewModel @ViewModelInject constructor(
     val searchQuery = MutableStateFlow("")
 
     val preferencesFlow = preferencesManager.preferencesFlow
+
+    private val tasksEventChannel = Channel<TasksEvent>()
+    val taskEvent = tasksEventChannel.receiveAsFlow()
 
     private val tasksFlow = combine(
         searchQuery,
@@ -49,6 +54,19 @@ class TasksViewModel @ViewModelInject constructor(
         taskDao.update(task.copy(completed = isChecked))
     }
 
+    fun onTaskSwiped(task:Task) = viewModelScope.launch {
+        taskDao.delete(task)
+        tasksEventChannel.send(TasksEvent.ShowUndoDeleteTaskMessage(task))
+    }
+
+    fun onUndoDeleteClick(task: Task) = viewModelScope.launch {
+        taskDao.insert(task)
+    }
+
+    // fragment에 event를 전송하기 위해서
+    sealed class TasksEvent {
+        data class ShowUndoDeleteTaskMessage(val task: Task) : TasksEvent()
+    }
 }
 
 enum class SortOrder { BY_NAME, BY_DATE }
