@@ -15,6 +15,8 @@ MVVM, dagger hilt, clone coding study<br>
 - <a href="https://blog.naver.com/ponson1017/222481307199">6. Flow </a> <br>
 - <a href="https://blog.naver.com/ponson1017/222504643527">7. DataStore </a> <br>
 - <a href="https://blog.naver.com/ponson1017/222506700493">8. Coroutine Channel </a> <br>
+- <a href="https://blog.naver.com/ponson1017/222507961099">9-1. Navigation </a> <br>
+- <a href="https://blog.naver.com/ponson1017/222508027481">9-2. SavedStateHandle </a> <br>
 
 <br><br>
 <h2>개발 환경</h2>
